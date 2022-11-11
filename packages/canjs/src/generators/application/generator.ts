@@ -77,8 +77,8 @@ export default async function (tree: Tree, options: ApplicationGeneratorSchema) 
         'serve-prod': {
           executor: '@bitovi-nx-workshop/canjs:serve',
           options: {
-            index: 'index.html',
-            root: path.join('dist', normalizedOptions.projectRoot),
+            index: 'TODO:',
+            root: 'TODO:',
             // No need for `stealConfig` since this is a production build being served
             port: 8080,
           },
