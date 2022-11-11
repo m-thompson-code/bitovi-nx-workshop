@@ -1,8 +1,8 @@
 import {
   formatFiles,
   generateFiles,
-  readProjectConfiguration,
   names,
+  readProjectConfiguration,
   Tree,
 } from '@nrwl/devkit';
 import * as path from 'path';
@@ -15,11 +15,9 @@ interface NormalizedSchema extends ComponentGeneratorSchema {
 
 function normalizeOptions(tree: Tree, options: ComponentGeneratorSchema): NormalizedSchema {
 
-  // const project = readProjectConfiguration(tree, options.project);
-
   return {
     ...options,
-  } as any// TODO:;
+  } as any;// TODO:
 }
 
 function addFiles(tree: Tree, options: NormalizedSchema) {
