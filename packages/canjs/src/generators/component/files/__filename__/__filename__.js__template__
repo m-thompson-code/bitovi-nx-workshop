@@ -1,9 +1,0 @@
-import StacheElement from "can-stache-element";
-import view from "./<%= fileName %>.stache";
-import "./<%= fileName %>.css";
-
-class <%= className %> extends StacheElement {
-    static view = view;
-}
-
-customElements.define('can-<%= fileName %>', <%= className %>);
