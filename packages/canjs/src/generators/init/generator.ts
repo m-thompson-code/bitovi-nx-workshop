@@ -37,8 +37,31 @@ export function updateDependencies(host: Tree) {
 
 function addStealPlugins(host: Tree) {
     updateJson(host, 'package.json', (pkgJson) => {
-        // TODO: Update package.json to include steal plugins
-        // Example: https://nx.dev/recipes/generators/modifying-files#modify-json-files
+        // Source: https://nx.dev/recipes/generators/modifying-files#modify-json-files
+        
+        // if steal is undefined, set it to an empty object
+        pkgJson.steal = pkgJson.steal ?? {};
+
+        // add babelOptions
+        pkgJson.steal.babelOptions = pkgJson.steal.babelOptions ?? {};
+        // add babelOptions plugins
+        pkgJson.steal.babelOptions.plugins = pkgJson.steal.babelOptions.plugins ?? [];
+        if (!pkgJson.steal.babelOptions.plugins.includes('transform-class-properties')) {
+            pkgJson.steal.babelOptions.plugins.push('transform-class-properties')
+        }
+
+        // add plugins
+        pkgJson.steal.plugins = pkgJson.steal.plugins ?? [];
+        // add steal-css
+        if (!pkgJson.steal.plugins.includes('steal-css')) {
+            pkgJson.steal.plugins.push('steal-css')
+        }
+        // add steal-stache
+        if (!pkgJson.steal.plugins.includes('steal-stache')) {
+            pkgJson.steal.plugins.push('steal-stache')
+        }
+
+        // return modified JSON object
         return pkgJson;
     });
 }
