@@ -1,0 +1,61 @@
+{
+  "name": "canjs",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/canjs/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/canjs",
+        "main": "packages/canjs/src/index.ts",
+        "tsConfig": "packages/canjs/tsconfig.lib.json",
+        "assets": [
+          "packages/canjs/*.md",
+          {
+            "input": "./packages/canjs/src",
+            "glob": "**/!(*.ts)",
+            "output": "./src"
+          },
+          {
+            "input": "./packages/canjs/src",
+            "glob": "**/*.d.ts",
+            "output": "./src"
+          },
+          {
+            "input": "./packages/canjs",
+            "glob": "generators.json",
+            "output": "."
+          },
+          {
+            "input": "./packages/canjs",
+            "glob": "executors.json",
+            "output": "."
+          }
+        ]
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "packages/canjs/**/*.ts",
+          "packages/canjs/generators.json",
+          "packages/canjs/executors.json",
+          "packages/canjs/package.json"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "packages/canjs/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
