@@ -1,1 +1,10 @@
 <p><%= projectName %> works!</p>
+
+<% if(routing) { -%>
+<div>
+    <a href="{{ routeUrl(page='home') }}">Home</a> |
+    <a href="{{ routeUrl(page='not-found') }}">404</a>
+</div>
+
+{{ component }}
+<% } // end else block -%>
