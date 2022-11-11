@@ -21,8 +21,8 @@ export function updateDependencies(host: Tree) {
             // ['<package-name>']: '<version>',
         },
         {// List dev-dependencies and version
-            // ['@bitovi-nx-workshop/canjs']: //''file:../bitovi-nx-workshop/dist/packages/canjs',
             // ['<package-name>']: '<version>',
+            // ['@bitovi-nx-workshop/canjs']: //''file:../bitovi-nx-workshop/dist/packages/canjs',
         }
     );
 }
@@ -31,6 +31,7 @@ function addStealPlugins(host: Tree) {
     updateJson(host, 'package.json', (pkgJson) => {
         // TODO: Update package.json to include steal plugins
         // Example: https://nx.dev/recipes/generators/modifying-files#modify-json-files
+        return pkgJson;
     });
 }
 
