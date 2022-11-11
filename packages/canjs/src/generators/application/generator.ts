@@ -74,6 +74,16 @@ export default async function (tree: Tree, options: ApplicationGeneratorSchema) 
             port: 8080,
           }
         },
+        'serve-prod': {
+          executor: '@moo-org/my-plugin:serve',
+          options: {
+            index: 'TODO:',
+            root: 'TODO:',
+            // No need for `stealConfig` since this is a production build being served
+            port: 8080,
+          },
+          dependsOn: ["build"]
+        },
       },
     }
   );
