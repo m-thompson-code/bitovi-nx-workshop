@@ -77,8 +77,8 @@ export default async function (tree: Tree, options: ApplicationGeneratorSchema) 
         'serve-prod': {
           executor: '@moo-org/my-plugin:serve',
           options: {
-            index: 'TODO:',
-            root: 'TODO:',
+            index: 'index.html',
+            root: path.join('dist', normalizedOptions.projectRoot),
             // No need for `stealConfig` since this is a production build being served
             port: 8080,
           },
