@@ -1,1 +1,1 @@
-<%= projectName %>
+<p><%= projectName %> works!</p>

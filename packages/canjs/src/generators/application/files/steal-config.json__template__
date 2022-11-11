@@ -1,0 +1,3 @@
+{
+    "main": "<%= projectRoot %>/app/app"
+}
