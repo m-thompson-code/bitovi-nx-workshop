@@ -12,6 +12,11 @@
       "factory": "./src/generators/init/generator",
       "schema": "./src/generators/init/schema.json",
       "description": "Installs dependencies for canjs"
+    },
+    "component": {
+      "factory": "./src/generators/component/generator",
+      "schema": "./src/generators/component/schema.json",
+      "description": "Generates can-stache-element Component for canjs application."
     }
   }
 }
