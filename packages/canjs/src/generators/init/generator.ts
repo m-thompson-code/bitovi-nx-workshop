@@ -9,8 +9,8 @@ import {
 export function updateDependencies(host: Tree) {
     removeDependenciesFromPackageJson(
         host,
-        [],// List dev-dependencies
-        []// List dependencies
+        ['@moo-org/my-plugin', 'fs-extra'],// List dev-dependencies
+        ['can-route']// List dependencies
     );
 
     addStealPlugins(host);
@@ -19,10 +19,12 @@ export function updateDependencies(host: Tree) {
         host,
         {// List dependencies and version
             // ['<package-name>']: '<version>',
+            ['can-route']: '^5.0.2',
         },
         {// List dev-dependencies and version
             // ['<package-name>']: '<version>',
             // ['@bitovi-nx-workshop/canjs']: //''file:../bitovi-nx-workshop/dist/packages/canjs',
+            ['fs-extra']: '^10.1.0',
         }
     );
 }
