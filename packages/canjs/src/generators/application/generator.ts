@@ -61,9 +61,9 @@ export default async function (tree: Tree, options: ApplicationGeneratorSchema) 
         serve: {
           executor: '@bitovi-nx-workshop/canjs:serve',
           options: {
-            index: 'TODO:',
-            root: 'TODO:',
-            stealConfig: 'TODO',
+            index: 'index.html',
+            root: normalizedOptions.projectRoot,
+            stealConfig: 'steal-config.json',
             port: 8080,
           }
         },
