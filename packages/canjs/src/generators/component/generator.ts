@@ -39,7 +39,6 @@ function addFiles(tree: Tree, options: NormalizedSchema) {
     ...options,
     template: ''
   };
-  // TODO: handle where these files should be generated
   generateFiles(tree, path.join(__dirname, 'files'), options.componentPath, templateOptions);
 }
 
