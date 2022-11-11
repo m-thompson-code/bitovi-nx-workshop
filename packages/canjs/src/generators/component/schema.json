@@ -12,12 +12,17 @@
         "$source": "argv",
         "index": 0
       },
-      "x-prompt": "What name would you like to use?"
+      "x-prompt": "What component name would you like to use?"
     },
-    "directory": {
+    "project": {
       "type": "string",
-      "description": "A directory where the project is placed"
+      "description": "What project would you like to use?"
+    },
+    "relativePath": {
+      "type": "string",
+      "description": "What relative path from project source would you like to use?",
+      "default": ""
     }
   },
-  "required": ["name"]
+  "required": ["name", "project"]
 }

@@ -1,1 +1,3 @@
-const variable = "<%= projectName %>";
+can-<%= fileName %> {
+    display: block;
+}

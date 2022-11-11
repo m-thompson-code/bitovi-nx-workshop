@@ -1,6 +1,7 @@
 import {
   formatFiles,
   generateFiles,
+  names,
   readProjectConfiguration,
   Tree,
 } from '@nrwl/devkit';
@@ -8,19 +9,29 @@ import * as path from 'path';
 import { ComponentGeneratorSchema } from './schema';
 
 interface NormalizedSchema extends ComponentGeneratorSchema {
-  projectName: string;
-  projectRoot: string;
-  projectDirectory: string;
-  parsedTags: string[];
+  componentPath: string;
+  fileName: string;
+  className: string;
 }
 
 function normalizeOptions(tree: Tree, options: ComponentGeneratorSchema): NormalizedSchema {
+  const fileName = names(options.name).fileName;
+  const className = names(options.name).className;
 
-  // const project = readProjectConfiguration(tree, options.project);
+  const project = readProjectConfiguration(tree, options.project);
+
+  if (!project.sourceRoot) {
+    throw new Error("Unexpected missing project.sourceRoot")
+  }
+
+  const componentPath = path.join(project.sourceRoot, 'app', options.relativePath);
 
   return {
     ...options,
-  } as any// TODO:;
+    fileName,
+    className,
+    componentPath
+  };
 }
 
 function addFiles(tree: Tree, options: NormalizedSchema) {
@@ -28,7 +39,7 @@ function addFiles(tree: Tree, options: NormalizedSchema) {
       ...options,
       template: ''
     };
-    generateFiles(tree, path.join(__dirname, 'files'), options.projectRoot, templateOptions);
+    generateFiles(tree, path.join(__dirname, 'files'), options.componentPath, templateOptions);
 }
 
 export default async function (tree: Tree, options: ComponentGeneratorSchema) {
