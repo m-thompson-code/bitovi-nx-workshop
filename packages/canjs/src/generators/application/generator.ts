@@ -26,6 +26,7 @@ function normalizeOptions(tree: Tree, options: ApplicationGeneratorSchema): Norm
 
   return {
     ...options,
+    routing: !!options.routing,
     projectName,
     projectRoot,
     projectDirectory

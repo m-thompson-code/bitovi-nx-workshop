@@ -1,0 +1,42 @@
+import StacheElement from "can-stache-element";
+<% if(routing) { -%>
+import route from "can-route";
+import "can-stache-route-helpers";
+import RoutePushstate from "can-route-pushstate";
+<% } // end else block -%>
+import view from "./app.stache";
+import "./app.css";
+
+<% if(routing) { -%>
+route.urlData = new RoutePushstate();
+route.register("{page}", { page: "home" });
+route.start();
+<% } // end else block %>
+export class App extends StacheElement {
+    static view = view;
+
+    <% if(routing) { -%>
+    static props = {
+        routeData: {
+            get default() {
+                return route.data
+            },
+        },
+    };
+
+    get component() {
+        switch (this.routeData.page) {
+            case "home":
+                const home = document.createElement("p");
+                home.innerHTML = "Home route";
+                return home;
+            default:
+                const notFound = document.createElement("p");
+                notFound.innerHTML = "404: not found";
+                return notFound;
+        }
+    }
+    <% } // end else block -%>
+}
+
+customElements.define('can-app', App);

@@ -17,6 +17,11 @@
     "directory": {
       "type": "string",
       "description": "A directory where the project is placed"
+    },
+    "routing": {
+      "type": "boolean",
+      "description": "Add push state routing?",
+      "default": false
     }
   },
   "required": ["name"]
