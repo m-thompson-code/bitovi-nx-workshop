@@ -9,24 +9,38 @@ import * as path from 'path';
 import { ComponentGeneratorSchema } from './schema';
 
 interface NormalizedSchema extends ComponentGeneratorSchema {
-  projectRoot: string;// TODO: replace with better properties
-
+  componentPath: string;
+  fileName: string;
+  className: string;
 }
 
 function normalizeOptions(tree: Tree, options: ComponentGeneratorSchema): NormalizedSchema {
+  const fileName = names(options.name).fileName;
+  const className = names(options.name).className;
+
+  const project = readProjectConfiguration(tree, options.project);
+
+  if (!project.sourceRoot) {
+    throw new Error("Unexpected missing project.sourceRoot")
+  }
+
+  const componentPath = path.join(project.sourceRoot, 'app', options.relativePath);
 
   return {
     ...options,
-  } as any;// TODO:
+    fileName,
+    className,
+    componentPath,
+  };
 }
 
 function addFiles(tree: Tree, options: NormalizedSchema) {
-    const templateOptions = {
-      ...options,
-      template: ''
-    };
-    // TODO: handle where these files should be generated
-    generateFiles(tree, path.join(__dirname, 'files'), options.projectRoot, templateOptions);
+  const templateOptions = {
+    ...options,
+    template: ''
+  };
+  // TODO: handle where these files should be generated
+  generateFiles(tree, path.join(__dirname, 'files'), options.componentPath, templateOptions);
 }
 
 export default async function (tree: Tree, options: ComponentGeneratorSchema) {
