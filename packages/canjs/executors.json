@@ -5,6 +5,11 @@
       "implementation": "./src/executors/serve/executor",
       "schema": "./src/executors/serve/schema.json",
       "description": "Serves single page application can-stache-element single page application"
+    },
+    "build": {
+      "implementation": "./src/executors/build/executor",
+      "schema": "./src/executors/build/schema.json",
+      "description": "Creates production steal-tools bundle for canjs application"
     }
   }
 }

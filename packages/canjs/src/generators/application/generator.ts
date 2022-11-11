@@ -57,6 +57,13 @@ export default async function (tree: Tree, options: ApplicationGeneratorSchema) 
       targets: {
         build: {
           executor: "@bitovi-nx-workshop/canjs:build",
+          options: {
+            index: 'TODO:',
+            root: 'TODO:',// A little tricky
+            stealConfig: 'TODO:',
+            assets: 'TODO',
+            dist: 'TODO:'// A little more tricky
+          }
         },
         serve: {
           executor: '@bitovi-nx-workshop/canjs:serve',
