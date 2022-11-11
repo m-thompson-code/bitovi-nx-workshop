@@ -1,0 +1,3 @@
+can-<%= fileName %> {
+    display: block;
+}
