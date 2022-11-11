@@ -44,6 +44,9 @@ function addFiles(tree: Tree, options: NormalizedSchema) {
 
 export default async function (tree: Tree, options: ApplicationGeneratorSchema) {
   const normalizedOptions = normalizeOptions(tree, options);
+
+  console.log('Generator application', normalizedOptions);
+  
   addProjectConfiguration(
     tree,
     normalizedOptions.projectName,
