@@ -18,13 +18,19 @@ export function updateDependencies(host: Tree) {
     return addDependenciesToPackageJson(
         host,
         {// List dependencies and version
-            // ['<package-name>']: '<version>',
             ['can-route']: '^5.0.2',
+            ['can-stache-route-helpers']: '^2.0.0',
+            ['can-route-pushstate']: '^6.0.0',
+            ['can-stache-element']: '^1.2.0',
+            ['steal']: '^2.3.0',
         },
         {// List dev-dependencies and version
-            // ['<package-name>']: '<version>',
             // ['@bitovi-nx-workshop/canjs']: //''file:../bitovi-nx-workshop/dist/packages/canjs',
             ['fs-extra']: '^10.1.0',
+            ['moo-stache-helper']: '^1.0.8',
+            ['steal-css']: '^1.3.2',
+            ['steal-stache']: '^5.0.0',
+            ['steal-tools']: '^2.3.0',
         }
     );
 }
