@@ -58,6 +58,15 @@ export default async function (tree: Tree, options: ApplicationGeneratorSchema) 
         build: {
           executor: "@bitovi-nx-workshop/canjs:build",
         },
+        serve: {
+          executor: '@bitovi-nx-workshop/canjs:serve',
+          options: {
+            index: 'TODO:',
+            root: 'TODO:',
+            stealConfig: 'TODO',
+            port: 8080,
+          }
+        },
       },
     }
   );
