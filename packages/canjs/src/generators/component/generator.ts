@@ -2,16 +2,15 @@ import {
   formatFiles,
   generateFiles,
   readProjectConfiguration,
+  names,
   Tree,
 } from '@nrwl/devkit';
 import * as path from 'path';
 import { ComponentGeneratorSchema } from './schema';
 
 interface NormalizedSchema extends ComponentGeneratorSchema {
-  projectName: string;
-  projectRoot: string;
-  projectDirectory: string;
-  parsedTags: string[];
+  projectRoot: string;// TODO: replace with better properties
+
 }
 
 function normalizeOptions(tree: Tree, options: ComponentGeneratorSchema): NormalizedSchema {
@@ -28,6 +27,7 @@ function addFiles(tree: Tree, options: NormalizedSchema) {
       ...options,
       template: ''
     };
+    // TODO: handle where these files should be generated
     generateFiles(tree, path.join(__dirname, 'files'), options.projectRoot, templateOptions);
 }
 
